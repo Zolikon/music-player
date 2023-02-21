@@ -1,0 +1,34 @@
+<mat-expansion-panel hideToggle #albumPanel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Albums
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div *ngIf="listing$ | async as listings">
+        <ng-container *ngFor="let album of listings.albums">
+          <div class="album-selector" (click)="onAlbumSelected(album.location); albumPanel.close()">{{ album.title }}</div>
+        </ng-container>
+      </div>
+</mat-expansion-panel>
+<div *ngIf="playerAvailable" class="audio-holder">
+    <div class="control-holder">
+        <h1>{{currentAlbum.title}}</h1>
+        <audio class="mat-primary" #audio_control controls [autoplay]="autoPlay" [src]="songAsSource()" (ended)="songEnded()" (play)="play()" (pause)="pause()">
+        </audio>
+        <div>
+            <button mat-mini-fab color="primary" (click)="previousSong()">
+                <mat-icon>skip_previous</mat-icon>
+            </button>
+            <button mat-mini-fab color="primary" (click)="nextSong()">
+                <mat-icon>skip_next</mat-icon>
+            </button>
+            <button mat-mini-fab color="primary" (click)="toggleShuffle()">
+                <mat-icon *ngIf="isShuffle">shuffle</mat-icon>
+                <mat-icon *ngIf="!isShuffle">playlist_play</mat-icon>
+            </button>
+        </div>
+    </div>
+    <div class="playlist-holder">
+        <div class="playlist-item" [ngClass]="{'playlist-item-selected': i == currentSong}" *ngFor="let song of currentAlbum.songs; let i = index" (click)="selectSong(i)">{{formattedSongName(song)}}</div>
+    </div>
+</div>

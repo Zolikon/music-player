@@ -1,0 +1,70 @@
+.audio-holder{
+    margin-top: 50px;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    font-family: fantasy; font-size: 16px; font-style: normal;
+}
+
+.album-selector {
+    text-align: center;
+    font-family: fantasy; font-size: 16px; font-style: normal;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 3px;
+}
+
+.album-selector:hover {
+    background-color: aqua;
+}
+
+mat-expansion-panel {
+    width: 300px;
+    margin-top: 20px;
+    min-width: 200px;
+    top: 20px;
+    z-index: 9999;
+    position: relative;
+}
+
+h1 {
+    height: 60px;
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.control-holder {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    audio {
+        margin: auto;
+    }
+    div {
+        margin: auto;
+    }
+    button {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+}
+
+.playlist-holder {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap:5px;
+}
+
+.playlist-item-selected {
+    background-color: aqua;
+}
+
+.playlist-item {
+    cursor: pointer;
+}
